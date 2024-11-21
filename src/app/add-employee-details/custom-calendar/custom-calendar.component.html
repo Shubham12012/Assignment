@@ -1,0 +1,29 @@
+<ion-modal backdropDismiss="false" [isOpen]="isOpen">
+  <ng-template>
+    <div class="label-section ion-margin-top">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="6" *ngFor="let item of filters">
+            <div [ngClass]="activeFilter == item.id ? 'active-filter' : ''" (click)="applyFilter(item.id)">{{ item.label }}</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <ion-datetime presentation="date" [(ngModel)]="selectedDate" *ngIf="!isToDate"></ion-datetime>
+    <ion-datetime presentation="date" [(ngModel)]="selectedDate" *ngIf="isToDate" [min]="fromDate"></ion-datetime>
+    <ion-footer class="ion-no-border common-footer-style">
+      <ion-toolbar>
+        <ion-label slot="start" class="label-selected-date">
+          <i class="ri-calendar-event-line"></i>
+          <span>{{ selectedDate != null ? (selectedDate | date : 'd MMM y') : 'No date' }}</span>
+        </ion-label>
+        <ion-button slot="end" class="btn-cancel" (click)="cancel()">
+          Cancel
+        </ion-button>
+        <ion-button slot="end" class="btn-save" (click)="confirm()">
+          Save
+        </ion-button>
+      </ion-toolbar>
+    </ion-footer>
+  </ng-template>
+</ion-modal>

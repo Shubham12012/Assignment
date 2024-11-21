@@ -1,0 +1,49 @@
+ion-modal {
+    --width: 95%;
+    --height: fit-content;
+    --border-radius: 16px;
+
+    @media (min-width: 768px) and (max-width: 992px) {
+        --max-width: 400px;
+    }
+
+    @media (min-width: 992px) and (max-width: 1200px) {
+        --max-width: 400px;
+    }
+
+    @media (min-width: 1200px) {
+        --max-width: 400px;
+    }
+
+    .label-section {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+
+        div {
+            background-color: #EDF8FF;
+            color: var(--ion-color-primary);
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .active-filter {
+            background-color: var(--ion-color-primary);
+            color: #fff;
+        }
+    }
+
+    ion-datetime {
+        min-width: 100%;
+    }
+
+    .label-selected-date {
+        font-size: 15px;
+
+        i {
+            margin-left: 15px;
+            margin-right: 5px;
+            color: var(--ion-color-primary);
+        }
+    }
+}

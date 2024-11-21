@@ -1,0 +1,108 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+      <ion-title>
+        {{ !isEdit ? "Add Employee Details" : "Edit Employee Details" }}
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+  <!-- <ion-grid fixed class="ion-margin-top">
+    <ion-row>
+      <ion-col sizeXl="6" size="12" sizeMd="6">
+        <div class="input-container">
+          <i class="ri-user-3-line icon"></i>
+          <input [(ngModel)]="employeeName" type="text" placeholder="Employee name">
+        </div>
+      </ion-col>
+      <ion-col sizeXl="6" size="12" sizeMd="6">
+        <div class="input-container cursor-pointer" (click)="openRoleActionSheet()">
+          <i class="ri-briefcase-line icon"></i>
+          <label [ngStyle]="selectedRole == '' ? { 'color': '#949C9E' } : {}">{{ selectedRole == "" ? "Select role" : selectedRole }}</label>
+          <i class="ri-arrow-down-s-fill icon-right"></i>
+        </div>
+      </ion-col>
+      <ion-col sizeXl="5.8" size="5" sizeMd="5.8">
+        <div class="input-container cursor-pointer" (click)="openCustomCalendar()">
+          <i class="ri-calendar-event-line icon"></i>
+          <label>{{ fromDate | date : 'd MMM y' }}</label>
+        </div>
+      </ion-col>
+      <ion-col class="arrow-class" sizeXl="0.4" size="2" sizeMd="0.4">
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </ion-col>
+      <ion-col sizeXl="5.8" size="5" sizeMd="5.8">
+        <div class="input-container cursor-pointer" (click)="openCustomCalendar(true)">
+          <i class="ri-calendar-event-line icon"></i>
+          <label>{{ toDate == null ? 'No date' : (toDate | date : 'd MMM y') }}</label>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+  <ion-grid fixed class="ion-margin-top">
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Employee Form</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="12">
+                <ion-note>Eployee name</ion-note>
+                <div class="input-container">
+                  <i class="ri-user-3-line icon"></i>
+                  <input [(ngModel)]="employeeName" type="text" placeholder="Enter name">
+                </div>
+              </ion-col>
+              <ion-col size="12">
+                <ion-note>Eployee role</ion-note>
+                <div class="input-container cursor-pointer" (click)="openRoleActionSheet()">
+                  <i class="ri-briefcase-line icon"></i>
+                  <label [ngStyle]="selectedRole == '' ? { 'color': '#949C9E' } : {}">{{ selectedRole == "" ? "Select role" : selectedRole }}</label>
+                  <i class="ri-arrow-down-s-fill icon-right"></i>
+                </div>
+              </ion-col>
+              <ion-col size="12">
+                <ion-note>From date</ion-note>
+                <div class="input-container cursor-pointer" (click)="openCustomCalendar()">
+                  <i class="ri-calendar-event-line icon"></i>
+                  <label>{{ fromDate | date : 'd MMM y' }}</label>
+                </div>
+              </ion-col>
+              <ion-col size="12">
+                <ion-note>To date (if employee not present currently)</ion-note>
+                <div class="input-container cursor-pointer" (click)="openCustomCalendar(true)">
+                  <i class="ri-calendar-event-line icon"></i>
+                  <label>{{ toDate == null ? 'No date' : (toDate | date : 'd MMM y') }}</label>
+                </div>
+              </ion-col>
+              <ion-col size="12">
+                <ion-button class="btn-cancel" (click)="cancel()">
+                  Cancel
+                </ion-button>
+                <ion-button class="btn-save" (click)="validateForm()">
+                  {{ isEdit ? 'Update' : 'Save' }}
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <app-custom-calendar #custcal (selectedDateExport)="onFromDateSelection($event)"></app-custom-calendar>
+</ion-content>
+
+<!-- <ion-footer class="ion-no-border common-footer-style">
+  <ion-toolbar>
+    <ion-button slot="end" class="btn-cancel" (click)="cancel()">
+      Cancel
+    </ion-button>
+    <ion-button slot="end" class="btn-save" (click)="validateForm()">
+      Save
+    </ion-button>
+  </ion-toolbar>
+</ion-footer> -->
